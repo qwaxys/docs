@@ -14,3 +14,4 @@ jobs:
     - run: npm ci
     - run: npm install --save docusaurus-gtm-plugin
     - run: npm run build
+    - run: ls build
