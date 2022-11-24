@@ -7,4 +7,4 @@ jobs:
     steps:
     - uses: actions/checkout@master
       with:
-        repository: qwaxys/clearml-docs
+        repository: ${{ github.repository_owner }}/clearml-docs
