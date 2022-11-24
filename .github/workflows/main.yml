@@ -25,4 +25,5 @@ jobs:
         source_folder: 'build'
         destination_repo: ${{ github.repository }}
         destination_folder: 'test-dir'
+        destination_branch: 'main'
         commit_msg: 'test GH actions'
