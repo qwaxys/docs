@@ -5,5 +5,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - name: Send greeting
-      run: echo "Hello World"
+    - uses: actions/checkout@master
+      with:
+        name: qwaxys/clearml-docs
+        ref: refs/heads/release
