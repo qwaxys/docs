@@ -7,4 +7,4 @@ jobs:
     steps:
     - uses: actions/checkout@master
       with:
-        name: qwaxys/clearml-docs
+        repository: qwaxys/clearml-docs
