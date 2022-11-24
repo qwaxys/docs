@@ -14,4 +14,15 @@ jobs:
     - run: npm ci
     - run: npm install --save docusaurus-gtm-plugin
     - run: npm run build
-    - run: ls build
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Pushes build folder
+      uses: datalbry/copy_folder_to_another_repo_action@1.0.0
+      env:
+        API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+      with:
+        source_folder: 'build'
+        destination_repo: ${{ github.repository }}
+        destination_folder: 'test-dir'
+        commit_msg: 'test GH actions'
