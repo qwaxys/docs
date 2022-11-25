@@ -24,3 +24,5 @@ jobs:
         destination_folder: 'test-dir'
         destination_branch: 'main'
         commit_msg: 'test GH actions'
+        user_email: '41898282+github-actions[bot]@users.noreply.github.com'
+        user_name: ${{ github.repository_owner }}
