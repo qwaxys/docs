@@ -5,7 +5,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
+    - uses: actions/checkout@v3
       with:
         repository: ${{ github.repository_owner }}/clearml-docs
     - uses: actions/setup-node@v3
@@ -14,15 +14,11 @@ jobs:
     - run: npm ci
     - run: npm install --save docusaurus-gtm-plugin
     - run: npm run build
-    - name: Pushes build folder
-      uses: datalbry/copy_folder_to_another_repo_action@1.0.0
-      env:
-        API_TOKEN_GITHUB: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        source_folder: 'build'
-        destination_repo: ${{ github.repository }}
-        destination_folder: 'test-dir'
-        destination_branch: 'main'
-        commit_msg: 'test GH actions'
-        user_email: ${{ secrets.GH_EMAIL }}
-        user_name: ${{ github.repository_owner }}
+    - run: cd build
+    - uses: actions/checkout@v3
+    - run: |
+        git config user.name github-actions
+        git config user.email github-actions@github.com
+        git add .
+        git commit -m "build"
+        git push
