@@ -14,11 +14,12 @@ jobs:
     - run: npm ci
     - run: npm install --save docusaurus-gtm-plugin
     - run: npm run build
-    - run: cd build
     - uses: actions/checkout@v3
+      with:
+          repository: ${{ github.repository }}
     - run: |
         git config user.name github-actions
         git config user.email github-actions@github.com
-        git add .
+        git add build
         git commit -m "build"
         git push
